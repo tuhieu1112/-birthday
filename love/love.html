@@ -42,7 +42,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative; /* thêm dòng này để QR code vị trí đúng */
+        position: relative;
     }
     .heartRain, .element {
       position: fixed;
@@ -51,17 +51,7 @@
       z-index: 9999;
       transition: all 1s ease;
     }
-    /* Style cho QR code */
-    #qrcode {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: white;
-      padding: 5px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
-      z-index: 10000;
-    }
+    
   </style>
 </head>
 <body>
@@ -146,8 +136,6 @@
             </div>
           </div>
         </div>
-        <!-- Chèn QR code ở đây -->
-        <div id="qrcode"></div>
       </div>
     </div>
   </div>
@@ -188,8 +176,6 @@
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
   <script>
     $(window).on('load', function(event) {
         $('body').removeClass('preloading');
@@ -445,20 +431,5 @@
             });
                 
   </script>
-      // ...
-
-      // Tạo QR code
-      var url = "http://192.168.109.1:5500/index.html"; // Thay bằng địa chỉ URL của bạn
-      new QRCode(document.getElementById("qrcode"), {
-        text: url,
-        width: 100,
-        height: 100,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-      });
-
-    });
-  </script>
-</body>
+  </body>
 </html>
