@@ -59,10 +59,10 @@ body{
         transform: scale(0);
     }
     30%{
-        transform: scale(1.2);
+        transform: scale(1.5);
     }
     50%,100%{
-        transform: scale(1);
+        transform: scale(2);
     }
 }
 .heartItem.item1 img{
