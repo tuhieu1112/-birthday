@@ -1,153 +1,173 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-*{
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
     background: rgb(255, 218, 232);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
-.loading{
+
+.loading {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-.loading .boxHeartImg{
-    position: absolute;
     width: 100%;
-    top: -40px;
-    display: flex;
-    justify-content: space-between;
+    max-width: 600px;
+    padding: 20px;
+    margin: 0 auto;
 }
-.heartItem.item1{
+
+.progress-bar {
     position: relative;
-    left: -4%;
-    transform: scale(0);
+    width: 80vw;
+    max-width: 400px;
+    height: 45px;
+    background: #fff;
+    padding: 3px;
+    border: 3px solid rgb(91, 81, 84);
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    z-index: 1;
 }
-.heartItem.item2{
-    position: relative;
-    left: 4%;
-    transform: scale(0);
+
+.loading .boxHeartImg {
+    position: absolute;
+    bottom: 100%;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+    z-index: 2;
 }
-.heartItem.item3{
-    position: relative;
-    right: -6%;
-    transform: scale(0);
+
+.heartItem {
+    position: absolute;
+    bottom: 20%;
+    transform: translateX(-50%) scale(0);
 }
-/* animation: love1 5s infinite ease-in 1s; */
-/* @keyframes love1{
-    0%{
-        opacity: 0;
-        transform: scale(0.2) rotate(0deg) translate3d(100px, 0, 0);
-    }
-    50%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-        transform: scale(0.8) rotate(-40deg) translate3d(-50px, -400px, 0);
-    }
-} */
-@keyframes heartScale{
-    0%{
-        transform: scale(0);
-    }
-    30%{
-        transform: scale(1.5);
-    }
-    50%,100%{
-        transform: scale(2);
-    }
+
+.heartItem.item1 {
+    left: 20%;
+    transform: translateX(-10%) scale(0); /* dịch nhẹ sang trái */
 }
-.heartItem.item1 img{
-    width: 40px;
+
+.heartItem.item2 {
+    left: 50%;
+    transform: translateX(-45%) scale(0); /* hơi lệch trái để nhìn vừa mắt */
 }
-.heartItem.item2 img{
-    width: 50px;
-    transform: translateY(-10px);
+
+.heartItem.item3 {
+    left: 80%;
+    transform: translateX(-90%) scale(0); /* cân lại với kích thước ảnh */
 }
-.heartItem.item3 img{
-    width: 60px;
-    transform: translateY(-20px);
+
+@keyframes heartScale {
+    0% { transform: translateX(-50%) scale(0); }
+    30% { transform: translateX(-50%) scale(1.5); }
+    50%,100% { transform: translateX(-50%) scale(2); }
 }
-.heartItem::before{
+
+.heartItem img {
+    display: block;
+    max-width: 100%;
+}
+
+.heartItem.item1 img {
+    width: 8vw;
+    max-width: 40px;
+}
+
+.heartItem.item2 img {
+    width: 10vw;
+    max-width: 50px;
+}
+
+.heartItem.item3 img {
+    width: 12vw;
+    max-width: 60px;
+}
+
+.heartItem::before {
     position: absolute;
     content: '';
     width: 3px;
     height: 40px;
-    background-color: rgb(91,81,84);
-    left: 51%;
+    left: 50%;
     top: 10px;
     transform: translateX(-50%);
     z-index: -1;
 }
-.progress-bar{
-    position: relative;
-    width: 400px;
-    height: 45px;
-    background: #fff;
-    padding: 3px;
-    border: 3px solid rgb(91,81,84);
-    display: flex;
-}
-.progress{
-    width: 0px;
-    height: 100%;
-    background-color: rgb(244,118,121);
-    left: 0;
-    transition: 0.1s;
-}
-.percent{
+
+.progress {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgb(244, 118, 121);
+    transition: width 0.1s linear;
+    z-index: 0;
+}
+
+.percent {
+    position: relative;
+    z-index: 1;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
+    color: #000;
+    text-align: center;
+    width: 100%;
 }
-.loading .textBox{
+
+.loading .textBox {
     transition: 0.5s;
     margin-top: 10px;
+    text-align: center;
+    z-index: 2;
 }
-.loading .textLoad{
-    font-family: 'Roboto', sans-serif;
-    color: rgb(244,118,121);
-    font-family: 500;
-    font-size: 20px;
+
+.loading .textLoad {
+    color: rgb(244, 118, 121);
+    font-weight: 500;
+    font-size: 5vw;
     text-transform: uppercase;
 }
-.loading h2 .cricle1, .cricle2, .cricle3{
-    color: rgb(244,118,121);
+
+.loading h2 .cricle1,
+.cricle2,
+.cricle3 {
+    color: rgb(244, 118, 121);
     opacity: 0;
 }
-.cricle1{
-    animation: 1s .25s cricle linear infinite;
+
+.cricle1 { animation: 1s .25s cricle linear infinite; }
+.cricle2 { animation: 1s .5s cricle linear infinite; }
+.cricle3 { animation: 1s .75s cricle linear infinite; }
+
+@keyframes cricle {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
-.cricle2{
-    animation: 1s .5s cricle linear infinite;
-}
-.cricle3{
-    animation: 1s .75s cricle linear infinite;
-}
-@keyframes cricle{
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
-}
+
 .button{
     position: relative;
+    top: 10%;
     width: 10px;
     height: 10px;
     background: #fff;
@@ -173,23 +193,32 @@ body{
 .buttonCLick img{
     opacity: 0;
     width: 25px;
+    top: 10%;
     position: absolute;
     margin-left: -20px;
     transform: translateX(-20px) rotate(90deg);
     animation: 1s cursor infinite linear;
 }
-@keyframes cursor{
-    0%{
-        transform: translateX(-20px) rotate(90deg);
-    }
-    50%{
-        transform: translateX(-10px) rotate(90deg);
-    }
+
+@keyframes cursor {
+    0% { transform: translateX(-20px) rotate(90deg); }
+    50% { transform: translateX(-10px) rotate(90deg); }
 }
+
+@keyframes moveHeartBox {
+    0% {
+      left: 0%;
+    }
+    100% {
+      left: calc(100% - 33%); 
+    }
+  }
+  
 .heartBox{
     position: absolute;
-    top: -40px;
-    left: -3.2%;
+    top: -10%;
+    left: -20%;
+    transform: translateX(200%);
     width: 40px;
     height: 30px;
     border-radius: 10px;
@@ -199,8 +228,11 @@ body{
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: 0.1s;
+    animation: moveHeartBox 10.25s linear forwards;
+    z-index: 100;
 }
-.heartBox::before{
+
+.heartBox::before {
     content: "";
     position: absolute;
     top: 100%;
@@ -208,16 +240,18 @@ body{
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: rgb(244,118,121) transparent transparent transparent;
+    border-color: rgb(244, 118, 121) transparent transparent transparent;
 }
-.heartBox .heart{
+
+.heartBox .heart {
     position: relative;
     width: 10px;
     height: 10px;
     background-color: #fff;
     transform: rotate(45deg);
 }
-.heartBox .heart::before{
+
+.heartBox .heart::before {
     position: absolute;
     content: '';
     width: 100%;
@@ -226,7 +260,8 @@ body{
     right: 50%;
     border-radius: 50%;
 }
-.heartBox .heart::after{
+
+.heartBox .heart::after {
     position: absolute;
     content: '';
     width: 100%;
@@ -234,4 +269,29 @@ body{
     background-color: #fff;
     bottom: 50%;
     border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .loading .textLoad {
+        font-size: 6vw;
+    }
+    .progress-bar {
+        width: 90vw;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loading .textLoad {
+        font-size: 7vw;
+    }
+    .progress-bar {
+        width: 95vw;
+        height: 35px;
+    }
+    .heartItem.item1 img,
+    .heartItem.item2 img,
+    .heartItem.item3 img {
+        width: 8vw;
+    }
 }
