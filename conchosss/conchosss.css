@@ -1,0 +1,879 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Roboto:wght@500&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.outer-bg {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../image/sea.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.formInput {
+    position: absolute;
+    top: -100%;
+    width: clamp(300px, 80vw, 400px);
+    height: clamp(350px, 60vh, 450px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e47aa2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 70;
+    border-radius: 20px;
+    transition: 1s;
+    overflow: hidden;
+    padding-bottom: clamp(8px, 2vw, 10px);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation: formInput 1s 3s forwards;
+}
+
+@keyframes formInput {
+    0% { top: -100%; }
+    100% { top: clamp(20px, 10vh, 80px); }
+}
+
+.formInput::before {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: clamp(30px, 5vh, 40px);
+    background: #e47aa2;
+    top: -30px;
+    left: 20%;
+    z-index: -10;
+}
+
+.formInput::after {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: clamp(30px, 5vh, 40px);
+    background: #e47aa2;
+    top: -30px;
+    right: 20%;
+    z-index: -1;
+}
+
+.boxHands {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: -40%;
+    animation: handsCat 1s 4s forwards ease-in;
+}
+
+@keyframes handsCat {
+    0% { top: -40%; }
+    100% { top: 0px; }
+}
+
+.formInput .handsCat {
+    position: absolute;
+    transform: rotate(180deg);
+    width: clamp(60px, 15vw, 80px);
+    top: -60px;
+    animation: hands 1s 5s forwards ease-in-out;
+}
+
+@keyframes hands {
+    0% { top: -60px; }
+    50%, 100% { top: -150px; }
+}
+
+.handsCat img {
+    width: 100%;
+}
+
+.boxHands h1 {
+    transform: rotate(20deg);
+    transform-origin: top left;
+    padding-top: 5px;
+    color: #fff;
+    font-size: clamp(30px, 8vw, 50px);
+    font-family: 'Dancing Script', cursive;
+    animation: textHand 1.5s 6s forwards ease-in;
+}
+
+@keyframes textHand {
+    0% { transform: rotate(20deg); transform-origin: top left; }
+    20%, 100% { transform: rotate(0deg); transform-origin: top left; }
+}
+
+.boxSlider {
+    position: relative;
+    margin-top: clamp(50px, 10vh, 70px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: 1s;
+    animation: boxSlider 1s 8s forwards ease-out;
+}
+
+@keyframes boxSlider {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.boxSlider .left, .boxSlider .right {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    transform: translateY(-50%);
+    font-size: clamp(20px, 5vw, 30px);
+    cursor: pointer;
+    z-index: 50;
+}
+
+.left { left: clamp(20px, 10vw, 75px); }
+.right { right: clamp(20px, 10vw, 75px); }
+
+.listSlider {
+    position: relative;
+    width: clamp(100px, 30vw, 150px);
+    height: clamp(150px, 45vw, 225px);
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.listSlider .slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.listSlider .slider {
+    flex-shrink: 0;
+    width: clamp(100px, 30vw, 150px);
+    height: clamp(150px, 45vw, 225px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listSlider img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 10px;
+}
+
+.boxHandsInput {
+    display: flex;
+    position: relative;
+    top: 15px;
+    right: -200%;
+    width: 50%;
+    animation: boxInputHands 1s 9s forwards ease-in;
+}
+
+@keyframes boxInputHands {
+    0% { right: -200%; }
+    60%, 100% { right: 0%; }
+}
+
+.boxHandsInput input {
+    width: 100%;
+    height: clamp(30px, 8vw, 40px);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 0 clamp(8px, 2vw, 10px);
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(16px, 4vw, 20px);
+    text-align: center;
+    padding-top: 8px;
+    z-index: 11;
+    opacity: 0;
+    animation: boxSlider 1s 9s forwards ease-out;
+}
+
+.boxHandsInput .handsCatImgInput {
+    position: absolute;
+    width: clamp(60px, 15vw, 80px);
+    transform: rotate(270deg);
+    top: -140%;
+    right: -30px;
+    z-index: 100;
+    animation: imgHandInput 1s 10s forwards ease-in-out;
+}
+
+@keyframes imgHandInput {
+    0% { right: -30px; }
+    70%, 100% { right: -100%; }
+}
+
+.boxHandsInput .handsCatImgInput img {
+    width: 100%;
+}
+
+.buttonLove {
+    display: flex;
+    position: relative;
+    margin-top: clamp(15px, 5vh, 25px);
+    align-items: center;
+    transform: translateY(-100%);
+    z-index: 10;
+    width: clamp(30px, 8vw, 35px);
+    transition: 0.5s;
+}
+
+.buttonLove .cricleBtn {
+    width: clamp(30px, 8vw, 40px);
+    height: clamp(30px, 8vw, 40px);
+    background: #ffb7e4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transform: scale(0);
+    transition: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px,
+                inset rgb(255, 255, 255, 0.8) 1.95px 1.95px 2.6px,
+                inset rgba(0, 0, 0, 0.2) -1.95px -1.95px 2.6px;
+}
+
+.buttonLove .button {
+    position: absolute;
+    outline: none;
+    width: 0px;
+    height: 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    z-index: 9;
+    background: #FD89C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(10px, 3vw, 12px);
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px,
+                inset rgb(255, 255, 255, 0.8) 1.95px 1.95px 2.6px,
+                inset rgba(0, 0, 0, 0.2) -1.55px -1.55px 2.6px;
+}
+
+.buttonLove .button:hover {
+    background: #ff9fda;
+}
+
+.boxCat {
+    position: absolute;
+    bottom: 30%;
+    transform: translateX(clamp(-300px, -40vw, -400px));
+    z-index: 2;
+    animation: cat 4s 1s forwards;
+}
+
+.boxCat img {
+    width: clamp(100px, 25vw, 150px);
+}
+
+@keyframes cat {
+    0% { transform: translateX(clamp(-300px, -40vw, -400px)); }
+    50%, 100% { transform: translateX(clamp(150px, 30vw, 300px)); }
+}
+
+.boxDog {
+    position: absolute;
+    bottom: 18%;
+    transform: translateX(clamp(-300px, -40vw, -400px));
+    z-index: 3;
+    animation: dog 4s 1s forwards;
+}
+
+.boxDog img {
+    width: clamp(200px, 50vw, 350px);
+}
+
+@keyframes dog {
+    0% { transform: translateX(clamp(-300px, -40vw, -400px)); }
+    50%, 100% { transform: translateX(clamp(80px, 20vw, 125px)); }
+}
+
+.boxCar {
+    position: absolute;
+    bottom: 25%;
+    transform: translateX(clamp(-3000px, -40vw, -400px));
+    z-index: 5;
+    animation: car 4s 1s forwards, car1 2s 5s forwards;
+}
+
+.boxCar img {
+    width: clamp(200px, 50vw, 350px);
+}
+
+@keyframes car {
+    0% { transform: translateX(clamp(-3000px, -40vw, -400px)); }
+    50%, 100% { transform: translateX(clamp(300px, 60vw, 450px)); }
+}
+
+@keyframes car1 {
+    0% { transform: translateX(clamp(300px, 60vw, 450px)); }
+    /* 100% { transform: translateX(clamp(600px, 90vw, 1000px)); } */
+}
+
+.boxHeart {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    animation: heartX 4s 1s forwards;
+}
+
+@keyframes heartX {
+    0% { left: clamp(-300px, -50vw, -500px); }
+    50%, 100% { left: 0px; }
+}
+
+.boxUmbrellaLine {
+    position: absolute;
+    top: 55%;
+    right: 0;
+    width: 100%;
+    height: clamp(100px, 20vh, 150px);
+    overflow: hidden;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.boxUmbrella {
+    position: absolute;
+    right: -120px;
+    width: clamp(80px, 15vw, 100px);
+    animation: flyUmbrella 12s linear infinite;
+}
+
+.boxUmbrella img {
+    width: 100%;
+    height: auto;
+}
+
+@keyframes flyUmbrella {
+    0% { right: -120px; transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(clamp(-10px, -2vh, -15px)) rotate(5deg); }
+    50% { transform: translateY(clamp(5px, 1vh, 10px)) rotate(-5deg); }
+    75% { transform: translateY(clamp(-5px, -1vh, -10px)) rotate(5deg); }
+    100% { right: 110%; transform: translateY(0px) rotate(0deg); }
+}
+
+.cloud-container {
+    position: fixed;
+    top: 17%;
+    left: 0;
+    width: 100vw;
+    height: 50vh;
+    pointer-events: none;
+    z-index: 5000;
+    overflow: hidden;
+}
+
+.cloud {
+    position: absolute;
+    will-change: transform;
+    animation: moveCloud linear forwards;
+    opacity: 1;
+    filter: none !important;
+    image-rendering: crisp-edges;
+    width: clamp(80px, 20vw, 120px);
+    pointer-events: none;
+}
+
+.cloud img {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+@keyframes moveCloud {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(clamp(-150px, -20vw, -200px)); }
+}
+
+.heart1, .heart2, .heart3, .heart4, .heart5, .heart6 {
+    position: absolute;
+    width: clamp(10px, 3vw, 15px);
+    height: clamp(10px, 3vw, 15px);
+    background-color: rgb(255, 62, 65);
+    transform: scale(0.2) rotate(45deg);
+    bottom: 27%;
+    left: clamp(300px, 60vw, 470px);
+    z-index: 6;
+}
+
+.heart1 { animation: love1 4s infinite ease-in 1s; }
+.heart2 { animation: love2 3s infinite ease-in 2s; }
+.heart3 { animation: love2 5s infinite ease-in 1.5s; }
+.heart4 { animation: love1 2s infinite ease-in 2s; }
+.heart5 { animation: love2 2.5s infinite ease-in 1.5s; }
+.heart6 { animation: love1 3s infinite ease-in 1s; }
+
+.heart1::before, .heart2::before, .heart3::before,
+.heart4::before, .heart5::before, .heart6::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 62, 65);
+    left: -50%;
+    border-radius: 50%;
+}
+
+.heart1::after, .heart2::after, .heart3::after,
+.heart4::after, .heart5::after, .heart6::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 62, 65);
+    top: -50%;
+    border-radius: 50%;
+}
+
+@keyframes love1 {
+    0% { opacity: 0; transform: scale(0.3) rotate(0deg) translate3d(clamp(30px, 5vw, 40px), 0, 0); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: scale(0.9) rotate(-15deg) translate3d(clamp(-15px, -3vw, -20px), clamp(-200px, -30vh, -300px), 0); }
+}
+
+@keyframes love2 {
+    0% { opacity: 0; transform: scale(0.2) rotate(10deg) translate3d(clamp(40px, 7vw, 50px), 0, 0); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: scale(0.7) rotate(5deg) translate3d(clamp(-15px, -3vw, -20px), clamp(-150px, -25vh, -250px), 0); }
+}
+
+.boxLine {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.ground-line {
+    width: 100%;
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    overflow: hidden;
+    height: 6px;
+}
+
+.ground-line div {
+    width: 2000px;
+    font-size: 0;
+    animation: roadLine 3s infinite linear;
+}
+
+.ground-line .line1 { width: clamp(60px, 8vw, 80px); }
+.ground-line .line2 { width: clamp(200px, 20vw, 300px); }
+.ground-line .line3 { width: clamp(30px, 4vw, 40px); }
+.ground-line .line4 { width: clamp(150px, 15vw, 200px); }
+.ground-line .line5 { width: clamp(200px, 20vw, 280px); }
+
+.ground-line span {
+    height: 6px;
+    display: inline-block;
+    background-color: #4b1a61;
+    border-radius: 6px;
+    vertical-align: bottom;
+    margin-right: clamp(10px, 2vw, 20px);
+}
+
+@keyframes roadLine {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-1000px, 0); }
+}
+
+.loadingLove {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
+}
+
+.rhombus {
+    border-radius: 10px;
+    height: clamp(50px, 15vw, 75px);
+    width: clamp(50px, 15vw, 75px);
+}
+
+.rhombus:before {
+    content: "";
+    position: absolute;
+    background: #EA4C89;
+    height: clamp(30px, 8vw, 40px);
+    width: clamp(30px, 8vw, 40px);
+    z-index: 0;
+    margin-top: clamp(10px, 3vw, 15px);
+    margin-left: clamp(10px, 3vw, 15px);
+    transform: rotate(45deg);
+}
+
+.rhombus .circle1 {
+    content: "";
+    position: absolute;
+    background: #EA4C89;
+    height: clamp(30px, 8vw, 40px);
+    width: clamp(30px, 8vw, 40px);
+    z-index: 1;
+    border-radius: 50%;
+    animation-duration: 2s;
+    animation-name: change1;
+    animation-iteration-count: infinite;
+}
+
+.rhombus .circle2 {
+    content: "";
+    position: absolute;
+    background: #EA4C89;
+    height: clamp(30px, 8vw, 40px);
+    width: clamp(30px, 8vw, 40px);
+    z-index: 1;
+    margin-left: clamp(20px, 5vw, 30px);
+    border-radius: 50%;
+    animation-duration: 2s;
+    animation-name: change2;
+    animation-iteration-count: infinite;
+}
+
+@keyframes change1 {
+    0%, 25% { margin-top: 0px; margin-left: 0px; }
+    50%, 75% { margin-top: clamp(20px, 5vw, 30px); margin-left: clamp(20px, 5vw, 30px); }
+}
+
+@keyframes change2 {
+    25%, 50% { margin-top: clamp(20px, 5vw, 30px); margin-left: 0px; }
+    75%, 100% { margin-top: 0px; margin-left: clamp(20px, 5vw, 30px); }
+}
+
+.element, .heartRain {
+    position: fixed;
+    font-size: clamp(16px, 4vw, 24px);
+    pointer-events: none;
+    transition: left 1s ease, top 1s ease, opacity 1s ease;
+    opacity: 1;
+    user-select: none;
+    z-index: 9999;
+}
+
+.letters {
+    position: absolute;
+    width: clamp(50px, 12vw, 65px);
+    transition: 10s ease-in-out;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.letters img {
+    width: 100%;
+}
+
+.wrapperLetterForm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapperLetterForm.show {
+    display: flex;
+}
+
+.boxLetter {
+    max-width: clamp(400px, 90vw, 600px);
+    width: 90vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: none;
+    background: white;
+    border-radius: 15px;
+    padding: clamp(15px, 4vw, 20px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.boxLetter .formLetter {
+    position: relative;
+    width: 100%;
+    height: clamp(250px, 60vh, 350px);
+    background-color: #FFEBEB;
+    border-radius: 20px;
+    z-index: 100;
+    padding: clamp(10px, 3vw, 15px);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.formLetter .wrapperLetter {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #FF6666;
+    border-radius: inherit;
+    display: flex;
+}
+
+.boxLetter .before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: rotate(-15deg);
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.formLetter .heartLetter {
+    position: absolute;
+    width: clamp(20px, 5vw, 30px);
+    height: clamp(20px, 5vw, 30px);
+    border-radius: 50%;
+    background: #FFEBEB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.heartLetter:first-child {
+    right: 5px;
+    top: 10px;
+}
+
+.heartLetter:nth-child(2) {
+    left: 5px;
+    bottom: 10px;
+}
+
+.heartLetter .heartLetterItem {
+    position: relative;
+    width: clamp(8px, 2vw, 10px);
+    height: clamp(8px, 2vw, 10px);
+    transform: rotate(45deg);
+    background: #FF6666;
+}
+
+.heartLetterItem::before, .heartLetterItem::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.heartLetterItem::before { top: -50%; }
+.heartLetterItem::after { left: -50%; }
+
+.giftbox {
+    position: relative;
+    width: 60%;
+    height: 100%;
+}
+
+.giftbox .img {
+    position: absolute;
+    width: clamp(200px, 50vw, 300px);
+    bottom: -10px;
+    left: 5px;
+    z-index: 100;
+}
+
+.giftbox img {
+    width: 100%;
+}
+
+.textLetter {
+    position: relative;
+    width: 60%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.textLetter h2 {
+    margin-top: clamp(15px, 4vh, 20px);
+    font-size: clamp(20px, 6vw, 30px);
+    font-family: 'Dancing Script', cursive;
+}
+
+.textLetter .contentLetter {
+    font-size: clamp(14px, 4vw, 19px);
+    text-align: center;
+    padding: 0 clamp(8px, 2vw, 10px);
+    margin-top: clamp(8px, 2vh, 10px);
+    font-family: 'Dancing Script', cursive;
+}
+
+.boxLetter .fa-xmark {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: clamp(20px, 5vw, 32px);
+    color: #555;
+    cursor: pointer;
+    z-index: 10000;
+    user-select: none;
+}
+
+.heartAnimation {
+    position: absolute;
+    width: clamp(150px, 40vw, 200px);
+    bottom: 0;
+}
+
+.heartAnimation img {
+    width: 100%;
+}
+
+.mewmew1, .mewmew2 {
+    position: absolute;
+    width: clamp(70px, 15vw, 90px);
+}
+
+.mewmew1 { bottom: 0; left: 0; z-index: 100; }
+.mewmew2 { bottom: 0; right: 0; }
+
+.mewmew1 img, .mewmew2 img {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .formInput {
+        padding-bottom: clamp(10px, 3vw, 15px);
+    }
+    .boxSlider {
+        margin-top: clamp(40px, 8vh, 60px);
+    }
+    .boxHandsInput input {
+        font-size: clamp(14px, 3.5vw, 18px);
+    }
+    .giftbox .img {
+        width: clamp(150px, 40vw, 250px);
+    }
+    .boxCat {
+        animation: catTablet 4s 1s forwards;
+    }
+    @keyframes catTablet {
+        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
+        50%, 100% { transform: translateX(clamp(100px, 25vw, 200px)); }
+    }
+    .boxDog {
+        animation: dogTablet 4s 1s forwards;
+    }
+    @keyframes dogTablet {
+        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
+        50%, 100% { transform: translateX(clamp(50px, 15vw, 100px)); }
+    }
+    .boxCar {
+        animation: carTablet 4s 1s forwards, car1Tablet 2s 5s forwards;
+    }
+    @keyframes carTablet {
+        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
+        50%, 100% { transform: translateX(clamp(200px, 50vw, 300px)); }
+    }
+    @keyframes car1Tablet {
+        0% { transform: translateX(clamp(200px, 50vw, 300px)); }
+        100% { transform: translateX(clamp(400px, 80vw, 600px)); }
+    }
+}
+
+@media (max-width: 480px) {
+    .formInput {
+        width: clamp(250px, 90vw, 350px);
+        height: clamp(300px, 55vh, 400px);
+    }
+    .boxHands h1 {
+        font-size: clamp(24px, 6vw, 40px);
+    }
+    .listSlider {
+        width: clamp(80px, 25vw, 120px);
+        height: clamp(120px, 37.5vw, 180px);
+    }
+    .listSlider .slider {
+        width: clamp(80px, 25vw, 120px);
+        height: clamp(120px, 37.5vw, 180px);
+    }
+    .left, .right {
+        font-size: clamp(16px, 4vw, 24px);
+    }
+    .boxLetter .formLetter {
+        height: clamp(200px, 50vh, 300px);
+    }
+    .textLetter h2 {
+        font-size: clamp(16px, 5vw, 24px);
+    }
+    .textLetter .contentLetter {
+        font-size: clamp(12px, 3.5vw, 16px);
+    }
+    .boxCat {
+        animation: catMobile 4s 1s forwards;
+    }
+    @keyframes catMobile {
+        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
+        50%, 100% { transform: translateX(clamp(80px, 20vw, 150px)); }
+    }
+    .boxDog {
+        animation: dogMobile 4s 1s forwards;
+    }
+    @keyframes dogMobile {
+        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
+        50%, 100% { transform: translateX(clamp(30px, 10vw, 80px)); }
+    }
+    .boxCar {
+        animation: carMobile 4s 1s forwards, car1Mobile 2s 5s forwards;
+    }
+    @keyframes carMobile {
+        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
+        50%, 100% { transform: translateX(clamp(150px, 40vw, 200px)); }
+    }
+    @keyframes car1Mobile {
+        0% { transform: translateX(clamp(150px, 40vw, 200px)); }
+        100% { transform: translateX(clamp(300px, 70vw, 400px)); }
+    }
+}

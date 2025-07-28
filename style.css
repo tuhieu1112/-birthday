@@ -168,8 +168,8 @@ html, body {
 .button{
     position: relative;
     top: 10%;
-    width: 10px;
-    height: 10px;
+    width: 100px;
+    height: 100px;
     background: #fff;
     border-radius: 50%;
     transition: 0.5s;
