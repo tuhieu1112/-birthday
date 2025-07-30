@@ -50,7 +50,18 @@
       z-index: 9999;
       transition: all 1s ease;
     }
-    
+    .audio-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      cursor: pointer;
+      font-size: 24px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 50%;
+    }
   </style>
 </head>
 <body>
@@ -71,7 +82,7 @@
                   <img src="../image/cc.jpg" alt="slider1" />
                 </div>
                 <div class="slider">
-                  <img src="../image/letters.png" alt="slider2" />
+                  <img src="../image/fuck.jpg" alt="slider2" />
                 </div>
               </div>
               <div class="left">
@@ -174,261 +185,287 @@
     </div>
   </div>
 
+  <audio id="backgroundMusic" loop>
+    <source src="./audio/meomeo.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phần tử âm thanh.
+  </audio>
+  <div class="audio-control">
+    <i class="fa-solid fa-volume-up"></i>
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script>
     $(window).on('load', function(event) {
         $('body').removeClass('preloading');
-                $('.loadingLove').delay(1000).fadeOut('fast');
+        $('.loadingLove').delay(1000).fadeOut('fast');
 
-                // Hiệu ứng icon 🎂 khi di chuyển và click chuột
-                function getHeart(e) {
-                    let ele = document.createElement("div");
-                    ele.className = "element";
-                    document.querySelector("body").prepend(ele);
-                    ele.style.left = e.clientX + 'px';
-                    ele.style.top = e.clientY - 10 + 'px';
+        // Audio control
+        const audio = document.getElementById('backgroundMusic');
+        const audioControl = document.querySelector('.audio-control i');
+        audio.play().catch(function(error) {
+            console.log("Autoplay bị chặn: ", error);
+        });
 
-                    setTimeout(() => {
-                        let text = document.querySelectorAll(".element")[0];
-                        let directionX = Math.random() < 0.5 ? -1 : 1;
-                        let directionY = Math.random() < 0.5 ? -1 : 1;
+        audioControl.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                audioControl.classList.remove('fa-volume-mute');
+                audioControl.classList.add('fa-volume-up');
+            } else {
+                audio.pause();
+                audioControl.classList.remove('fa-volume-up');
+                audioControl.classList.add('fa-volume-mute');
+            }
+        });
 
-                        text.style.left = parseInt(text.style.left) - (directionX * (Math.random() * 100)) + 'px';
-                        text.style.top = parseInt(text.style.top) - (directionY * (Math.random() * 100)) + 'px';
-                        text.style.opacity = 0;
-                        text.style.transform = 'scale(0.4)';
-                        text.innerHTML = "🎂";
-                        text.style.zIndex = "100";
+        // Hiệu ứng icon 🎂 khi di chuyển và click chuột
+        function getHeart(e) {
+            let ele = document.createElement("div");
+            ele.className = "element";
+            document.querySelector("body").prepend(ele);
+            ele.style.left = e.clientX + 'px';
+            ele.style.top = e.clientY - 10 + 'px';
 
-                        setTimeout(() => {
-                            ele.remove();
-                        }, 1000);
-                    }, 10);
-                }
+            setTimeout(() => {
+                let text = document.querySelectorAll(".element")[0];
+                let directionX = Math.random() < 0.5 ? -1 : 1;
+                let directionY = Math.random() < 0.5 ? -1 : 1;
 
-                document.onmousemove = getHeart;
-                document.onmousedown = getHeart;
-
-                document.onclick = function(e) {
-                    let ele = document.createElement("div");
-                    ele.className = "heartRain";
-                    document.querySelector("body").prepend(ele);
-
-                    ele.style.left = e.clientX - 10 + 'px';
-                    ele.style.top = e.clientY - 10 + 'px';
-                    ele.innerHTML = "🎂";
-
-                    setTimeout(() => {
-                        const container = document.querySelector('.center-box');
-                        const rect = container.getBoundingClientRect();
-                        const randomX = rect.left + Math.random() * rect.width;
-                        ele.style.left = randomX + "px";
-                        ele.style.top = "calc(45% - 25px)";
-                    }, 100);
-
-                    setTimeout(() => {
-                        ele.style.top = "calc(75% - 35px)";
-                    }, 1300);
-
-                    setTimeout(() => {
-                        ele.style.opacity = 0;
-                    }, 3000);
-
-                    setTimeout(() => {
-                        ele.remove();
-                    }, 4000);
-                }
-
-                // Gõ tên "Thảo Nguyên"
-                const inputField = document.getElementById('inputField');
-                const textToType = "Thảo Nguyên"; 
-                const typingSpeed = 100;
-                let charIndex = 0;
-
-                function typeText() {
-                    if (charIndex < textToType.length) {
-                        inputField.value += textToType.charAt(charIndex);
-                        charIndex++;
-                        setTimeout(typeText, typingSpeed);
-                    }
-                    if (inputField.value.length === textToType.length) {
-                        setTimeout(() => {
-                            document.querySelector(".buttonLove").style.transform = "translateY(0%)";
-                            document.querySelector(".cricleBtn").style.transform = "scale(0.1)";
-                        }, 1000);
-                        setTimeout(() => {
-                            document.querySelector(".cricleBtn").style.transform = "scale(1)";
-                            document.querySelector(".cricleBtn").innerHTML = "💗";
-                        }, 2000);
-                        setTimeout(() => {
-                            document.querySelector(".buttonLove").style.width = "120px";
-                            document.querySelector(".button").style.transform = "translateX(25px)";
-                        }, 2500);
-                        setTimeout(() => {
-                            document.querySelector(".button").style.width = "calc(100% - 25px)";
-                            document.querySelector(".button").style.height = "10px";
-                        }, 3000);
-                        setTimeout(() => {
-                            document.querySelector(".button").style.height = "30px";
-                        }, 3500);
-                        setTimeout(() => {
-                            document.querySelector(".button").innerHTML = "Nhận thư";
-                        }, 4000);
-                    }
-                }
+                text.style.left = parseInt(text.style.left) - (directionX * (Math.random() * 100)) + 'px';
+                text.style.top = parseInt(text.style.top) - (directionY * (Math.random() * 100)) + 'px';
+                text.style.opacity = 0;
+                text.style.transform = 'scale(0.4)';
+                text.innerHTML = "🎂";
+                text.style.zIndex = "100";
 
                 setTimeout(() => {
-                    typeText();
-                }, 11500);
+                    ele.remove();
+                }, 1000);
+            }, 10);
+        }
 
-                // Xử lý slider ảnh
-                document.querySelector(".boxSlider .right").addEventListener("click", function() {
-                    var slider = document.querySelectorAll(".slider");
-                    document.querySelector(".listSlider").appendChild(slider[0]);
-                });
+        document.onmousemove = getHeart;
+        document.onmousedown = getHeart;
 
-                document.querySelector(".boxSlider .left").addEventListener("click", function() {
-                    var slider = document.querySelectorAll(".slider");
-                    document.querySelector(".listSlider").prepend(slider[slider.length - 1]);
-                });
+        document.onclick = function(e) {
+            let ele = document.createElement("div");
+            ele.className = "heartRain";
+            document.querySelector("body").prepend(ele);
 
-                // Thư tình
-                let indexText = 0;
-                let textLetter = document.querySelector('.textLetter h2');
-                const textLetterH2 = "Gửi chó!";
-                let timeoutTextLetter;
+            ele.style.left = e.clientX - 10 + 'px';
+            ele.style.top = e.clientY - 10 + 'px';
+            ele.innerHTML = "🎂";
 
-                function textCharLetter() {
-                    if (indexText < textLetterH2.length) {
-                        textLetter.textContent += textLetterH2[indexText];
-                        indexText++;
-                    } else {
-                        clearInterval(timeoutTextLetter);
-                        setTimeout(funcTimeoutLetterContent, 500);
-                    }
-                }
+            setTimeout(() => {
+                const container = document.querySelector('.center-box');
+                const rect = container.getBoundingClientRect();
+                const randomX = rect.left + Math.random() * rect.width;
+                ele.style.left = randomX + "px";
+                ele.style.top = "calc(45% - 25px)";
+            }, 100);
 
-                function funcTimeoutLetter() {
-                    indexText = 0;
-                    textLetter.textContent = '';
-                    clearInterval(timeoutTextLetter);
-                    timeoutTextLetter = setInterval(() => {
-                        textCharLetter();
-                    }, 200);
-                }
+            setTimeout(() => {
+                ele.style.top = "calc(75% - 35px)";
+            }, 1300);
 
-                // Nội dung thư
-                let indexTextContent = 0;
-                let textLetterContent = document.querySelector('.contentLetter');
-                const textLetterP = "1 tuần có 7 ngày. 1 ngày có 24 giờ. 1 giờ có 60 phút. 1 phút có 60 giây. Không có một ngày hoặc giờ mà tôi không nhớ bạn. Không có giây phút nào mà anh không nghĩ đến cậu. Tâm hồn và trái tim tôi tràn ngập bạn. Nhớ và yêu em nhiều lắm.";
-                let timeoutTextLetterContent;
+            setTimeout(() => {
+                ele.style.opacity = 0;
+            }, 3000);
 
-                function textCharLetterContent() {
-                    if (indexTextContent < textLetterP.length) {
-                        textLetterContent.textContent += textLetterP[indexTextContent];
-                        indexTextContent++;
-                    } else {
-                        clearInterval(timeoutTextLetterContent);
-                    }
-                }
+            setTimeout(() => {
+                ele.remove();
+            }, 4000);
+        }
 
-                function funcTimeoutLetterContent() {
-                    indexTextContent = 0;
-                    textLetterContent.textContent = '';
-                    clearInterval(timeoutTextLetterContent);
-                    timeoutTextLetterContent = setInterval(() => {
-                        textCharLetterContent();
-                    }, 100);
-                }
+        // Gõ tên "Thảo Nguyên"
+        const inputField = document.getElementById('inputField');
+        const textToType = "Thảo Nguyên"; 
+        const typingSpeed = 100;
+        let charIndex = 0;
 
-                // Click nút "Nhận thư" để tạo icon thư rơi
-                document.querySelector(".buttonLove").addEventListener("click", function() {
-                    let timeout = setInterval(() => {
-                        let letters = document.createElement("div");
-                        letters.className = "letters";
-                        letters.innerHTML = '<img src="../image/letters.png" alt="">';
-                        document.querySelector("body").prepend(letters);
-
-                        let left = Math.floor(Math.random() * 100);
-                        let rotate = Math.floor(Math.random() * 360);
-                        letters.style.left = left + "%";
-                        letters.style.top = "-10%";
-                        letters.style.transform = `rotate(${rotate}deg)`;
-
-                        setTimeout(() => {
-                            letters.style.top = "100%";
-                        }, 1000);
-
-                        setTimeout(() => {
-                            letters.remove();
-                        }, 11000);
-
-                        letters.addEventListener("click", function() {
-                            clearInterval(timeout);
-                            $(".wrapperLetterForm").fadeIn();
-                            funcTimeoutLetter();
-                        });
-                    }, 500);
-                });
-
-                // Đóng thư (sửa lại gọn)
-                document.querySelector(".fa-xmark").addEventListener("click", function() {
-                    indexTextContent = 0;
-                    textLetterContent.textContent = '';
-                    clearInterval(timeoutTextLetterContent);
-                    $(".wrapperLetterForm").fadeOut();
-                });
-
-                // Mây trôi
-                const cloudContainer = document.querySelector('.cloud-container');
-                const cloudImages = [
-                    '../image/cloud1.png',
-                    '../image/cloud2.png',
-                    '../image/cloud3.png',
-                    '../image/cloud4.png',
-                    '../image/cloud5.png'
-                ];
-
-                let currentClouds = 0;
-
-                function random(min, max) {
-                    return Math.random() * (max - min) + min;
-                }
-
-                function createCloud() {
-                    if (currentClouds >= 9) return;
-
-                    const cloud = document.createElement('div');
-                    cloud.classList.add('cloud');
-
-                    const img = document.createElement('img');
-                    img.src = cloudImages[Math.floor(Math.random() * cloudImages.length)];
-                    cloud.appendChild(img);
-
-                    cloud.style.top = `${random(20, 25)}vh`;
-                    const duration = random(7, 17);
-                    cloud.style.animationDuration = `${duration}s`;
-
-                    const scale = random(1.5, 2.5);
-                    cloud.style.transform = `scale(${scale}) translateX(100vw)`;
-
-                    cloudContainer.appendChild(cloud);
-                    currentClouds++;
-
-                    cloud.addEventListener('animationend', () => {
-                        cloud.remove();
-                        currentClouds--;
-                    });
-                }
-
-                setInterval(() => {
-                    const shouldAdd = Math.random() < 0.7 || currentClouds < 11;
-                    if (shouldAdd && currentClouds < 15) {
-                        createCloud();
-                    }
+        function typeText() {
+            if (charIndex < textToType.length) {
+                inputField.value += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, typingSpeed);
+            }
+            if (inputField.value.length === textToType.length) {
+                setTimeout(() => {
+                    document.querySelector(".buttonLove").style.transform = "translateY(0%)";
+                    document.querySelector(".cricleBtn").style.transform = "scale(0.1)";
+                }, 1000);
+                setTimeout(() => {
+                    document.querySelector(".cricleBtn").style.transform = "scale(1)";
+                    document.querySelector(".cricleBtn").innerHTML = "💗";
                 }, 2000);
+                setTimeout(() => {
+                    document.querySelector(".buttonLove").style.width = "120px";
+                    document.querySelector(".button").style.transform = "translateX(25px)";
+                }, 2500);
+                setTimeout(() => {
+                    document.querySelector(".button").style.width = "calc(100% - 25px)";
+                    document.querySelector(".button").style.height = "10px";
+                }, 3000);
+                setTimeout(() => {
+                    document.querySelector(".button").style.height = "30px";
+                }, 3500);
+                setTimeout(() => {
+                    document.querySelector(".button").innerHTML = "Nhận thư";
+                }, 4000);
+            }
+        }
+
+        setTimeout(() => {
+            typeText();
+        }, 11500);
+
+        // Xử lý slider ảnh
+        document.querySelector(".boxSlider .right").addEventListener("click", function() {
+            var slider = document.querySelectorAll(".slider");
+            document.querySelector(".listSlider").appendChild(slider[0]);
+        });
+
+        document.querySelector(".boxSlider .left").addEventListener("click", function() {
+            var slider = document.querySelectorAll(".slider");
+            document.querySelector(".listSlider").prepend(slider[slider.length - 1]);
+        });
+
+        // Thư tình
+        let indexText = 0;
+        let textLetter = document.querySelector('.textLetter h2');
+        const textLetterH2 = "Gửi chó!";
+        let timeoutTextLetter;
+
+        function textCharLetter() {
+            if (indexText < textLetterH2.length) {
+                textLetter.textContent += textLetterH2[indexText];
+                indexText++;
+            } else {
+                clearInterval(timeoutTextLetter);
+                setTimeout(funcTimeoutLetterContent, 500);
+            }
+        }
+
+        function funcTimeoutLetter() {
+            indexText = 0;
+            textLetter.textContent = '';
+            clearInterval(timeoutTextLetter);
+            timeoutTextLetter = setInterval(() => {
+                textCharLetter();
+            }, 200);
+        }
+
+        // Nội dung thư
+        let indexTextContent = 0;
+        let textLetterContent = document.querySelector('.contentLetter');
+        const textLetterP = "Chúc mừng sinh nhật bạn hiền. Chúc bạn tuổi mới không bị trĩ, không thoát vị đĩa đêm, không mờ mắt.... Happy birthday 😒";
+        let timeoutTextLetterContent;
+
+        function textCharLetterContent() {
+            if (indexTextContent < textLetterP.length) {
+                textLetterContent.textContent += textLetterP[indexTextContent];
+                indexTextContent++;
+            } else {
+                clearInterval(timeoutTextLetterContent);
+            }
+        }
+
+        function funcTimeoutLetterContent() {
+            indexTextContent = 0;
+            textLetterContent.textContent = '';
+            clearInterval(timeoutTextLetterContent);
+            timeoutTextLetterContent = setInterval(() => {
+                textCharLetterContent();
+            }, 100);
+        }
+
+        // Click nút "Nhận thư" để tạo icon thư rơi
+        document.querySelector(".buttonLove").addEventListener("click", function() {
+            let timeout = setInterval(() => {
+                let letters = document.createElement("div");
+                letters.className = "letters";
+                letters.innerHTML = '<img src="../image/letters.png" alt="">';
+                document.querySelector("body").prepend(letters);
+
+                let left = Math.floor(Math.random() * 100);
+                let rotate = Math.floor(Math.random() * 360);
+                letters.style.left = left + "%";
+                letters.style.top = "-10%";
+                letters.style.transform = `rotate(${rotate}deg)`;
+
+                setTimeout(() => {
+                    letters.style.top = "100%";
+                }, 1000);
+
+                setTimeout(() => {
+                    letters.remove();
+                }, 11000);
+
+                letters.addEventListener("click", function() {
+                    clearInterval(timeout);
+                    $(".wrapperLetterForm").fadeIn();
+                    funcTimeoutLetter();
+                });
+            }, 500);
+        });
+
+        // Đóng thư
+        document.querySelector(".fa-xmark").addEventListener("click", function() {
+            indexTextContent = 0;
+            textLetterContent.textContent = '';
+            clearInterval(timeoutTextLetterContent);
+            $(".wrapperLetterForm").fadeOut();
+        });
+
+        // Mây trôi
+        const cloudContainer = document.querySelector('.cloud-container');
+        const cloudImages = [
+            '../image/cloud1.png',
+            '../image/cloud2.png',
+            '../image/cloud3.png',
+            '../image/cloud4.png',
+            '../image/cloud5.png'
+        ];
+
+        let currentClouds = 0;
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function createCloud() {
+            if (currentClouds >= 9) return;
+
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud');
+
+            const img = document.createElement('img');
+            img.src = cloudImages[Math.floor(Math.random() * cloudImages.length)];
+            cloud.appendChild(img);
+
+            cloud.style.top = `${random(20, 25)}vh`;
+            const duration = random(7, 17);
+            cloud.style.animationDuration = `${duration}s`;
+
+            const scale = random(1.5, 2.5);
+            cloud.style.transform = `scale(${scale}) translateX(100vw)`;
+
+            cloudContainer.appendChild(cloud);
+            currentClouds++;
+
+            cloud.addEventListener('animationend', () => {
+                cloud.remove();
+                currentClouds--;
             });
-                
+        }
+
+        setInterval(() => {
+            const shouldAdd = Math.random() < 0.7 || currentClouds < 11;
+            if (shouldAdd && currentClouds < 15) {
+                createCloud();
+            }
+        }, 2000);
+    });
   </script>
-  </body>
+</body>
 </html>

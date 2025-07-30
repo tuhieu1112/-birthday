@@ -28,9 +28,9 @@
 
 .formInput {
     position: absolute;
-    top: -100%;
-    width: clamp(300px, 80vw, 400px);
-    height: clamp(350px, 60vh, 450px);
+    top: -120%;
+    width: clamp(250px, 60vw, 300px);
+    height: clamp(270px, 55vh, 400px);
     left: 50%;
     transform: translateX(-50%);
     background-color: #e47aa2;
@@ -49,7 +49,7 @@
 
 @keyframes formInput {
     0% { top: -100%; }
-    100% { top: clamp(20px, 10vh, 80px); }
+    100% { top: clamp(20px, 10vh, 20px); }
 }
 
 .formInput::before {
@@ -97,7 +97,7 @@
 
 @keyframes hands {
     0% { top: -60px; }
-    50%, 100% { top: -150px; }
+    50%, 100% { top: -1500px; }
 }
 
 .handsCat img {
@@ -145,8 +145,8 @@
     z-index: 50;
 }
 
-.left { left: clamp(20px, 10vw, 75px); }
-.right { right: clamp(20px, 10vw, 75px); }
+.left { left: clamp(10px, 10vw, 40px); }
+.right { right: clamp(10px, 10vw, 40px); }
 
 .listSlider {
     position: relative;
@@ -297,12 +297,12 @@
 
 @keyframes cat {
     0% { transform: translateX(clamp(-300px, -40vw, -400px)); }
-    50%, 100% { transform: translateX(clamp(150px, 30vw, 300px)); }
+    50%, 100% { transform: translateX(clamp(50px, 30vw, 300px)); }
 }
 
 .boxDog {
     position: absolute;
-    bottom: 18%;
+    bottom: 20%;
     transform: translateX(clamp(-300px, -40vw, -400px));
     z-index: 3;
     animation: dog 4s 1s forwards;
@@ -314,7 +314,7 @@
 
 @keyframes dog {
     0% { transform: translateX(clamp(-300px, -40vw, -400px)); }
-    50%, 100% { transform: translateX(clamp(80px, 20vw, 125px)); }
+    50%, 100% { transform: translateX(clamp(30px, 20vw, 125px)); }
 }
 
 .boxCar {
