@@ -85,6 +85,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    text-align: center;
     animation: handsCat 1s 4s forwards ease-in;
 }
 
@@ -94,16 +95,16 @@
 }
 
 .formInput .handsCat {
-    position: absolute;
+    position: relative;
     transform: rotate(180deg);
     width: clamp(60px, 15vw, 80px);
-    top: -60px;
+    margin: 0 auto;
     animation: hands 1s 5s forwards ease-in-out;
 }
 
 @keyframes hands {
-    0% { top: -60px; }
-    50%, 100% { top: -1500px; }
+    0% { opacity: 0; transform: rotate(180deg); }
+    50%, 100% { opacity: 1; transform: rotate(180deg); }
 }
 
 .handsCat img {
@@ -111,18 +112,16 @@
 }
 
 .boxHands h1 {
-    transform: rotate(20deg);
-    transform-origin: top left;
-    padding-top: 5px;
     color: #fff;
     font-size: clamp(30px, 8vw, 50px);
     font-family: 'Dancing Script', cursive;
+    margin: 0;
     animation: textHand 1.5s 6s forwards ease-in;
 }
 
 @keyframes textHand {
-    0% { transform: rotate(20deg); transform-origin: top left; }
-    20%, 100% { transform: rotate(0deg); transform-origin: top left; }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .boxSlider {
@@ -130,6 +129,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     opacity: 0;
     transition: 1s;
     animation: boxSlider 1s 8s forwards ease-out;
@@ -188,8 +188,9 @@
 
 .boxHandsInput {
     display: flex;
-    position: relative;
-    width: 70%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     animation: boxInputHands 1s 9s forwards ease-in;
 }
 
@@ -199,7 +200,7 @@
 }
 
 .boxHandsInput input {
-    width: 100%;
+    width: 70%;
     height: clamp(32px, 8vw, 42px);
     border: none;
     outline: none;
@@ -208,7 +209,6 @@
     font-family: 'Dancing Script', cursive;
     font-size: clamp(16px, 4vw, 20px);
     text-align: center;
-    padding-top: 8px;
     z-index: 11;
     opacity: 0;
     animation: boxSlider 1s 9s forwards ease-out;
@@ -235,11 +235,10 @@
 
 .buttonLove {
     display: flex;
-    position: relative;
     align-items: center;
     justify-content: center;
-    z-index: 10;
     width: clamp(35px, 10vw, 50px);
+    height: clamp(35px, 10vw, 50px);
     transition: 0.5s;
 }
 
