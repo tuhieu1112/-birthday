@@ -336,7 +336,7 @@
 
 @keyframes car1 {
     0% { transform: translateX(clamp(300px, 60vw, 450px)); }
-    /* 100% { transform: translateX(clamp(600px, 90vw, 1000px)); } */
+    100% { transform: translateX(clamp(600px, 90vw, 1000px)); }
 }
 
 .boxHeart {
@@ -875,5 +875,120 @@
     @keyframes car1Mobile {
         0% { transform: translateX(clamp(150px, 40vw, 200px)); }
         100% { transform: translateX(clamp(300px, 70vw, 400px)); }
+    }
+}
+
+/* Thêm media queries bổ sung cho responsive tốt hơn trên mobile */
+@media (max-width: 768px) {
+    .formInput {
+        width: 90vw;
+        max-width: 100vw; /* Đảm bảo không tràn */
+        height: 60vh;
+        top: 5vh; /* Giảm top để tránh tràn */
+    }
+
+    .listSlider {
+        width: 80vw;
+        height: 60vw;
+    }
+
+    .listSlider .slider {
+        width: 80vw;
+        height: 60vw;
+    }
+
+    .boxCat img,
+    .boxDog img,
+    .boxCar img {
+        width: 30vw;
+    }
+
+    .boxHandsInput input {
+        width: 70vw;
+    }
+
+    .buttonLove .cricleBtn,
+    .buttonLove .button {
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .heart1, .heart2, .heart3, .heart4, .heart5, .heart6 {
+        width: 4vw;
+        height: 4vw;
+        left: 70vw;
+    }
+
+    .cloud {
+        width: 25vw;
+    }
+
+    .letters {
+        width: 15vw;
+    }
+
+    .rhombus,
+    .rhombus:before,
+    .rhombus .circle1,
+    .rhombus .circle2 {
+        height: 10vw;
+        width: 10vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .formInput {
+        width: 95vw;
+        max-width: 100vw;
+        height: 70vh;
+        top: 2vh; /* Giảm top hơn nữa */
+    }
+
+    .listSlider {
+        width: 90vw;
+        height: 70vw;
+    }
+
+    .listSlider .slider {
+        width: 90vw;
+        height: 70vw;
+    }
+
+    .boxCat img,
+    .boxDog img,
+    .boxCar img {
+        width: 40vw;
+    }
+
+    .boxHandsInput input {
+        width: 80vw;
+    }
+
+    .buttonLove .cricleBtn,
+    .buttonLove .button {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .heart1, .heart2, .heart3, .heart4, .heart5, .heart6 {
+        width: 5vw;
+        height: 5vw;
+        left: 75vw;
+    }
+
+    .cloud {
+        width: 30vw;
+    }
+
+    .letters {
+        width: 20vw;
+    }
+
+    .rhombus,
+    .rhombus:before,
+    .rhombus .circle1,
+    .rhombus .circle2 {
+        height: 12vw;
+        width: 12vw;
     }
 }
