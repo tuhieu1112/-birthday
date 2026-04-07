@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -338,11 +338,10 @@
                     document.querySelector(".cricleBtn").innerHTML = "💗";
                 }, 2000);
                 setTimeout(() => {
-                    document.querySelector(".buttonLove").style.width = "120px";
-                    document.querySelector(".button").style.transform = "translateX(25px)";
+                    document.querySelector(".buttonLove").classList.add("expanded");
                 }, 2500);
                 setTimeout(() => {
-                    document.querySelector(".button").style.width = "calc(100% - 25px)";
+                    document.querySelector(".button").style.width = "70px";
                     document.querySelector(".button").style.height = "10px";
                 }, 3000);
                 setTimeout(() => {
