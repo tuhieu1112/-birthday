@@ -48,7 +48,7 @@
     padding: clamp(20px, 4vw, 30px) clamp(15px, 3vw, 25px);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     animation: formInput 1s 3s forwards;
-    gap: clamp(12px, 3vh, 20px);
+    gap: clamp(8px, 2vh, 12px);
 }
 
 @keyframes formInput {
@@ -130,6 +130,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: auto;
     opacity: 0;
     transition: 1s;
     animation: boxSlider 1s 8s forwards ease-out;
@@ -191,6 +192,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: auto;
     animation: boxInputHands 1s 9s forwards ease-in;
 }
 
