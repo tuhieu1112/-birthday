@@ -992,3 +992,39 @@
         width: 12vw;
     }
 }
+
+/* Media queries cho orientation landscape để tối ưu hiển thị */
+@media (orientation: landscape) {
+    .formInput {
+        top: 5vh;
+        height: 80vh;
+    }
+
+    .boxSlider {
+        margin-top: 20px;
+    }
+
+    .listSlider {
+        width: 60vw;
+        height: 40vw;
+    }
+
+    .listSlider .slider {
+        width: 60vw;
+        height: 40vw;
+    }
+
+    .boxHandsInput input {
+        width: 60vw;
+    }
+
+    .buttonLove {
+        width: 6vw;
+    }
+
+    .buttonLove .cricleBtn,
+    .buttonLove .button {
+        width: 6vw;
+        height: 6vw;
+    }
+}
