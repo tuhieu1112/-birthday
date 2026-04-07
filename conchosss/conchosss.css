@@ -28,7 +28,7 @@
 
 .formInput {
     position: absolute;
-    top: 50%;
+    top: 33%;
     width: min(90%, 360px);
     max-width: 90%;
     min-width: 260px;
@@ -53,7 +53,7 @@
 }
 
 @keyframes formInput {
-    0% { opacity: 0; transform: translate(-50%, calc(-50% - 60vh)); }
+    0% { opacity: 0; transform: translate(-50%, calc(-50% - 40vh)); }
     100% { opacity: 1; transform: translate(-50%, -50%); }
 }
 
