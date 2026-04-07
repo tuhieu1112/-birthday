@@ -32,8 +32,8 @@
     width: min(90%, 360px);
     max-width: 90%;
     min-width: 260px;
-    height: clamp(300px, 60%, 420px);
-    min-height: 280px;
+    height: auto;
+    min-height: auto;
     left: 50%;
     transform: translateX(-50%);
     background-color: #e47aa2;
@@ -44,15 +44,16 @@
     z-index: 70;
     border-radius: 20px;
     transition: 1s;
-    overflow: hidden;
-    padding-bottom: clamp(8px, 2vw, 10px);
+    overflow: visible;
+    padding: clamp(20px, 4vw, 30px) clamp(15px, 3vw, 25px);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     animation: formInput 1s 3s forwards;
+    gap: clamp(12px, 3vh, 20px);
 }
 
 @keyframes formInput {
     0% { top: -120%; }
-    100% { top: 5%; }
+    100% { top: 50%; }
 }
 
 .formInput::before {
@@ -78,16 +79,18 @@
 }
 
 .boxHands {
-    position: absolute;
+    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    top: -40%;
+    align-items: center;
+    width: 100%;
     animation: handsCat 1s 4s forwards ease-in;
 }
 
 @keyframes handsCat {
-    0% { top: -40%; }
-    100% { top: 0px; }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .formInput .handsCat {
@@ -124,7 +127,6 @@
 
 .boxSlider {
     position: relative;
-    margin-top: 6%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -154,7 +156,7 @@
 .listSlider {
     position: relative;
     width: 80%;
-    height: 40%;
+    height: clamp(140px, 50vw, 200px);
     overflow: hidden;
     border-radius: 10px;
     background-color: transparent;
@@ -187,15 +189,13 @@
 .boxHandsInput {
     display: flex;
     position: relative;
-    top: 6%;
-    right: -200%;
     width: 70%;
     animation: boxInputHands 1s 9s forwards ease-in;
 }
 
 @keyframes boxInputHands {
-    0% { right: -200%; }
-    60%, 100% { right: 0%; }
+    0% { opacity: 0; transform: translateX(20px); }
+    60%, 100% { opacity: 1; transform: translateX(0); }
 }
 
 .boxHandsInput input {
@@ -236,12 +236,10 @@
 .buttonLove {
     display: flex;
     position: relative;
-    margin-top: 5%;
     align-items: center;
-    transform: translateY(-100%);
+    justify-content: center;
     z-index: 10;
-    width: 18%;
-    min-width: 40px;
+    width: clamp(35px, 10vw, 50px);
     transition: 0.5s;
 }
 
@@ -792,26 +790,21 @@
 @media (max-width: 768px) {
     .formInput {
         width: 90vw;
-        max-width: 100vw;
-        height: 65vh;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        max-height: 80vh;
-        padding-bottom: clamp(10px, 3vw, 15px);
+        max-width: 90vw;
     }
 
     .boxSlider {
-        margin-top: clamp(40px, 8vh, 60px);
+        width: 100%;
     }
 
     .listSlider {
         width: 80vw;
-        height: 60vw;
+        height: clamp(120px, 45vw, 180px);
     }
 
     .listSlider .slider {
-        width: 80vw;
-        height: 60vw;
+        width: 100%;
+        height: 100%;
     }
 
     .boxHandsInput input {
@@ -888,11 +881,8 @@
     .formInput {
         width: 95%;
         max-width: 95%;
-        height: 70%;
-        min-height: 280px;
         top: 50%;
         transform: translate(-50%, -50%);
-        max-height: 78vh;
     }
 
     .boxHands h1 {
@@ -901,7 +891,7 @@
 
     .listSlider {
         width: 90%;
-        height: 36%;
+        height: clamp(120px, 50vw, 160px);
     }
 
     .listSlider .slider {
@@ -996,18 +986,9 @@
 
 /* Media queries cho orientation landscape để tối ưu hiển thị */
 @media (orientation: landscape) {
-    .formInput {
-        top: 5%;
-        height: 70%;
-    }
-
-    .boxSlider {
-        margin-top: 4%;
-    }
-
     .listSlider {
         width: 65%;
-        height: 35%;
+        height: clamp(70px, 25vw, 110px);
     }
 
     .listSlider .slider {
@@ -1020,12 +1001,13 @@
     }
 
     .buttonLove {
-        width: 12%;
+        width: clamp(35px, 8vw, 45px);
     }
 
     .buttonLove .cricleBtn,
     .buttonLove .button {
-        width: 12%;
-        height: 12%;
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
     }
 }
