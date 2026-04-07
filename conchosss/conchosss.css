@@ -788,110 +788,20 @@
     width: 100%;
 }
 
-@media (max-width: 768px) {
-    .formInput {
-        padding-bottom: clamp(10px, 3vw, 15px);
-    }
-    .boxSlider {
-        margin-top: clamp(40px, 8vh, 60px);
-    }
-    .boxHandsInput input {
-        font-size: clamp(14px, 3.5vw, 18px);
-    }
-    .giftbox .img {
-        width: clamp(150px, 40vw, 250px);
-    }
-    .boxCat {
-        animation: catTablet 4s 1s forwards;
-    }
-    @keyframes catTablet {
-        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
-        50%, 100% { transform: translateX(clamp(100px, 25vw, 200px)); }
-    }
-    .boxDog {
-        animation: dogTablet 4s 1s forwards;
-    }
-    @keyframes dogTablet {
-        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
-        50%, 100% { transform: translateX(clamp(50px, 15vw, 100px)); }
-    }
-    .boxCar {
-        animation: carTablet 4s 1s forwards, car1Tablet 2s 5s forwards;
-    }
-    @keyframes carTablet {
-        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
-        50%, 100% { transform: translateX(clamp(200px, 50vw, 300px)); }
-    }
-    @keyframes car1Tablet {
-        0% { transform: translateX(clamp(200px, 50vw, 300px)); }
-        100% { transform: translateX(clamp(400px, 80vw, 600px)); }
-    }
-}
-
-@media (max-width: 480px) {
-    .formInput {
-        width: clamp(250px, 90vw, 350px);
-        height: clamp(300px, 55vh, 400px);
-    }
-    .boxHands h1 {
-        font-size: clamp(24px, 6vw, 40px);
-    }
-    .listSlider {
-        width: clamp(80px, 25vw, 120px);
-        height: clamp(120px, 37.5vw, 180px);
-    }
-    .listSlider .slider {
-        width: clamp(80px, 25vw, 120px);
-        height: clamp(120px, 37.5vw, 180px);
-    }
-    .left, .right {
-        font-size: clamp(16px, 4vw, 24px);
-    }
-    .boxLetter .formLetter {
-        height: clamp(200px, 50vh, 300px);
-    }
-    .textLetter h2 {
-        font-size: clamp(16px, 5vw, 24px);
-    }
-    .textLetter .contentLetter {
-        font-size: clamp(12px, 3.5vw, 16px);
-    }
-    .boxCat {
-        animation: catMobile 4s 1s forwards;
-    }
-    @keyframes catMobile {
-        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
-        50%, 100% { transform: translateX(clamp(80px, 20vw, 150px)); }
-    }
-    .boxDog {
-        animation: dogMobile 4s 1s forwards;
-    }
-    @keyframes dogMobile {
-        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
-        50%, 100% { transform: translateX(clamp(30px, 10vw, 80px)); }
-    }
-    .boxCar {
-        animation: carMobile 4s 1s forwards, car1Mobile 2s 5s forwards;
-    }
-    @keyframes carMobile {
-        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
-        50%, 100% { transform: translateX(clamp(150px, 40vw, 200px)); }
-    }
-    @keyframes car1Mobile {
-        0% { transform: translateX(clamp(150px, 40vw, 200px)); }
-        100% { transform: translateX(clamp(300px, 70vw, 400px)); }
-    }
-}
-
-/* Thêm media queries bổ sung cho responsive tốt hơn trên mobile */
+/* Desktop Base Styles - để dành cho màn hình lớn */
 @media (max-width: 768px) {
     .formInput {
         width: 90vw;
-        max-width: 100vw; /* Đảm bảo không tràn */
+        max-width: 100vw;
         height: 65vh;
         top: 50%;
         transform: translate(-50%, -50%);
         max-height: 80vh;
+        padding-bottom: clamp(10px, 3vw, 15px);
+    }
+
+    .boxSlider {
+        margin-top: clamp(40px, 8vh, 60px);
     }
 
     .listSlider {
@@ -904,14 +814,9 @@
         height: 60vw;
     }
 
-    .boxCat img,
-    .boxDog img,
-    .boxCar img {
-        width: 30vw;
-    }
-
     .boxHandsInput input {
         width: 70vw;
+        font-size: clamp(14px, 3.5vw, 18px);
     }
 
     .buttonLove .cricleBtn,
@@ -941,6 +846,42 @@
         height: 10vw;
         width: 10vw;
     }
+
+    .giftbox .img {
+        width: clamp(150px, 40vw, 250px);
+    }
+
+    .boxCat {
+        animation: catTablet 4s 1s forwards;
+    }
+    @keyframes catTablet {
+        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
+        50%, 100% { transform: translateX(clamp(100px, 25vw, 200px)); }
+    }
+    .boxDog {
+        animation: dogTablet 4s 1s forwards;
+    }
+    @keyframes dogTablet {
+        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
+        50%, 100% { transform: translateX(clamp(50px, 15vw, 100px)); }
+    }
+    .boxCar {
+        animation: carTablet 4s 1s forwards, car1Tablet 2s 5s forwards;
+    }
+    @keyframes carTablet {
+        0% { transform: translateX(clamp(-200px, -35vw, -300px)); }
+        50%, 100% { transform: translateX(clamp(200px, 50vw, 300px)); }
+    }
+    @keyframes car1Tablet {
+        0% { transform: translateX(clamp(200px, 50vw, 300px)); }
+        100% { transform: translateX(clamp(400px, 80vw, 600px)); }
+    }
+
+    .boxCat img,
+    .boxDog img,
+    .boxCar img {
+        width: 30vw;
+    }
 }
 
 @media (max-width: 480px) {
@@ -954,6 +895,10 @@
         max-height: 78vh;
     }
 
+    .boxHands h1 {
+        font-size: clamp(24px, 6vw, 40px);
+    }
+
     .listSlider {
         width: 90%;
         height: 36%;
@@ -962,6 +907,22 @@
     .listSlider .slider {
         width: 100%;
         height: 100%;
+    }
+
+    .left, .right {
+        font-size: clamp(16px, 4vw, 24px);
+    }
+
+    .boxLetter .formLetter {
+        height: clamp(200px, 50vh, 300px);
+    }
+
+    .textLetter h2 {
+        font-size: clamp(16px, 5vw, 24px);
+    }
+
+    .textLetter .contentLetter {
+        font-size: clamp(12px, 3.5vw, 16px);
     }
 
     .boxCat img,
@@ -1000,6 +961,36 @@
     .rhombus .circle2 {
         height: 12vw;
         width: 12vw;
+    }
+
+    .giftbox .img {
+        width: clamp(150px, 40vw, 250px);
+    }
+
+    .boxCat {
+        animation: catMobile 4s 1s forwards;
+    }
+    @keyframes catMobile {
+        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
+        50%, 100% { transform: translateX(clamp(80px, 20vw, 150px)); }
+    }
+    .boxDog {
+        animation: dogMobile 4s 1s forwards;
+    }
+    @keyframes dogMobile {
+        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
+        50%, 100% { transform: translateX(clamp(30px, 10vw, 80px)); }
+    }
+    .boxCar {
+        animation: carMobile 4s 1s forwards, car1Mobile 2s 5s forwards;
+    }
+    @keyframes carMobile {
+        0% { transform: translateX(clamp(-150px, -30vw, -200px)); }
+        50%, 100% { transform: translateX(clamp(150px, 40vw, 200px)); }
+    }
+    @keyframes car1Mobile {
+        0% { transform: translateX(clamp(150px, 40vw, 200px)); }
+        100% { transform: translateX(clamp(300px, 70vw, 400px)); }
     }
 }
 
